@@ -15,6 +15,9 @@
             }
             return $this->personas;
         }
+        public function setPersonas(){
+            require("insert.php");
+        }
 
     }
 
