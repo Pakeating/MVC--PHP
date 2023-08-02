@@ -1,18 +1,16 @@
 <?php
-include("ObjetoBlog.php");
+include_once("ObjetoBlog.php");
 class ManejoObjetos{
-private $conexion;
-public function __construc($conexion){
-    $this->setConexion($conexion);
+private $miconexion;
+public function __construc($miconexion){
+    $this->miconexion=$miconexion;
 }
-public function setConexion(PDO $conexion){
-$this->conexion=$conexion;
 
-}
+
 public function getContenidoPorFecha(){
     $matriz=array();
     $contador=0;
-    $resultado=$this->conexion->query("SELECT* FROM contenido ORDER BY fecha");
+    $resultado=$this->miconexion->query("SELECT* FROM contenido ORDER BY fecha DESC");
     while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
         $blopg=new ObjetoBlog();
         $blog->setId($registro["id"]);
@@ -28,13 +26,16 @@ public function getContenidoPorFecha(){
 }
 
 public function insertarContenido(ObjetoBlog $blog){
+    if($this->miconexion==null){echo'PENE1';}
     $sql='INSERT INTO contenido(titulo, fecha, comentario,imagen) VALUES("'.$blog->getTitulo().'","'.$blog->getFecha().'","'
     .$blog->getComentario().'","'.$blog->getImagen().'")';
-    $this->conexion->exec($sql);
+    if($this->miconexion==null){echo'PENE';}
+    $this->miconexion->exec($sql);
+}
 }
 
 
-}
+
 
 
 
