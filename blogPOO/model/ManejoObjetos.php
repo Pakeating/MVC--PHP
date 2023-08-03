@@ -2,10 +2,10 @@
 include_once("ObjetoBlog.php");
 class ManejoObjetos{
 private $miconexion;
-public function __construc($miconexion){
+public function __construct($miconexion){
     $this->miconexion=$miconexion;
+    
 }
-
 
 public function getContenidoPorFecha(){
     $matriz=array();
@@ -26,10 +26,9 @@ public function getContenidoPorFecha(){
 }
 
 public function insertarContenido(ObjetoBlog $blog){
-    if($this->miconexion==null){echo'PENE1';}
+    
     $sql='INSERT INTO contenido(titulo, fecha, comentario,imagen) VALUES("'.$blog->getTitulo().'","'.$blog->getFecha().'","'
     .$blog->getComentario().'","'.$blog->getImagen().'")';
-    if($this->miconexion==null){echo'PENE';}
     $this->miconexion->exec($sql);
 }
 }

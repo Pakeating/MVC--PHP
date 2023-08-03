@@ -3,7 +3,7 @@
     include_once('../model/ManejoObjetos.php');
 
     try{
-        $conexion=new PDO("mysql:host=localhost; dbname=pruebas","root","francisco");
+        $conexion=new PDO("mysql:host=localhost; dbname=blogphp","root","francisco");
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
 
@@ -35,17 +35,17 @@
         }
 
         $manejoObjeto=new ManejoObjetos($conexion);
+        
         $blog=new ObjetoBlog();
         $blog->setTitulo(htmlentities(addslashes($_POST['campo_titulo']),ENT_QUOTES));
-        $blog->setFecha(Date('Y-m-d- H:i:s'));
+        $blog->setFecha(Date('Y-m-d H:i:s'));
         $blog->setComentario(htmlentities(addslashes($_POST['area_comentarios']),ENT_QUOTES));
         $blog->setImagen($_FILES['imagen']['name']);
-
         $manejoObjeto->insertarContenido($blog);
         echo'<br> Entrada añadida con exito<br>';
-
+       
     }catch( Exception $e){
-        echo 'ERROR: '. e->getMessage();
+        echo 'ERROR: '. $e->getMessage();
     }
 
     ?>
