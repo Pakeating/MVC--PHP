@@ -43,7 +43,7 @@
         $blog->setImagen($_FILES['imagen']['name']);
         $manejoObjeto->insertarContenido($blog);
         echo'<br> Entrada añadida con exito<br>';
-        echo'<a href="../view/Formulario.php">Añadir otra entrada</a>';
+        echo'<a href="../view/Formulario.php">Añadir otra entrada</a><br>';
         echo'<a href="../view/MostrarBlog.php">Ir al Blog</a>';
        
     }catch( Exception $e){

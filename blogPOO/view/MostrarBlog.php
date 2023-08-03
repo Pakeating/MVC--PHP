@@ -17,13 +17,13 @@
             echo'No hay entradas aun';
         }else{
             foreach($tabla_blog as $valor){
-                echo '<h3>'.$valor->getTitulo().'</h3';
-                echo'<h4>'.$valor->getFecha().'</h4';
-                echo'div style="width:400px">';
+                echo '<h3>'.$valor->getTitulo().'</h3>';
+                echo'<h4>'.$valor->getFecha().'</h4>';
+                echo'<div style="width:400px">';
                 echo $valor->getComentario().'</div>';
                 if($valor->getImagen()!=''){
                     echo'<img src="../imagenes/';
-                    echo $valor->getImagen().'"width="200px" height="200px"/>';
+                    echo $valor->getImagen().'"width="200px" height="250px"/>';
                 }
                 echo'<hr/>';
             }

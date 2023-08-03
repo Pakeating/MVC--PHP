@@ -12,12 +12,12 @@ public function getContenidoPorFecha(){
     $contador=0;
     $resultado=$this->miconexion->query("SELECT* FROM contenido ORDER BY fecha DESC");
     while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
-        $blopg=new ObjetoBlog();
+        $blog=new ObjetoBlog();
         $blog->setId($registro["id"]);
-        $blog->setTitulo($registro["Titulo"]);
-        $blog->setFecha($registro["Fecha"]);
-        $blog->setComentario($registro["Comentario"]);
-        $blog->setImagen($registro["Imagen"]);
+        $blog->setTitulo($registro["titulo"]);
+        $blog->setFecha($registro["fecha"]);
+        $blog->setComentario($registro["comentario"]);
+        $blog->setImagen($registro["imagen"]);
         $matriz[$contador]=$blog;
         $contador++;
 
